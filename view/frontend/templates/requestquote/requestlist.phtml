@@ -1,0 +1,67 @@
+<div class="container-fluid" id="quotation-request">
+  <span class="success_msg"></span>
+  <div class="row product-header">
+    <div class="col-sm-8" id="quoted-title">
+     <strong class="quote-product-detail">
+       <center><?= /* @noEscape */ __('Product Detail') ?></center>
+      </strong>
+   </div>    
+   <div class="col-sm-4" id="quoted-title">
+    <strong><center><?= /* @noEscape */ __('Admin Reply') ?></center></strong>
+  </div>
+</div>
+<?php
+$productCollection = $block->getRequestCollection();
+if ($productCollection == ''): ?> 
+ <br><p class="note-msg"><?= /* @noEscape */ __('There is no request found.') ?></p>
+    <?php else: ?>  
+        <?php foreach ($productCollection as $productData):
+            $quoteId = $productData->getId();
+            $productId = $productData->getProductId();
+            $adminReply = $productData->getAdminReply();
+            $attachment = $productData->getAttachment();
+            $requestedQty = $productData->getRequestedqty();
+            $_product = $block->getLoadProduct($productId);
+            $productImageUrl = $block->getUrl('pub/media/catalog') . 'product' . $_product->getImage();
+            ?>
+    <div class="row category-products"> 
+      <div class="product-row" id="requset_id_<?= /* @noEscape */ $quoteId; ?>">
+        <div class="col-sm-4">
+            <?php $alt = $block->stripTags($block->getImageLabel($_product, 'small_image'), null, true); ?>
+          <a 
+            href="<?= /* @noEscape */ $productImageUrl; ?>" 
+            title="<?= /* @noEscape */ $alt?>" 
+            class="product-image">
+              <img 
+                src="<?= /* @noEscape */ $productImageUrl; ?>" 
+                width="135" height="135" 
+                alt="<?= /* @noEscape */ $alt?>"/>
+          </a>
+        </div>
+        <div class="col-sm-4">
+          <h3 class="product-name">
+            <?= /* @noEscape */ $block->escapeHtml($_product->getName()); ?>
+          </h3>
+          <div class="product-sku">
+            <span>Product Code: </span>
+            <?= /* @noEscape */ $_product->getSku(); ?>
+          </div>
+          <div class="requested-qty">
+            <span>Phone Number: </span>
+            <?= /* @noEscape */ $productData->getRequestedqty();?>
+          </div>
+        </div>            
+        <div class="col-sm-4">
+          <br>  
+            <?php
+            if ($adminReply == '') { ?>                         
+            <p class ="quote-error"><?= /* @noEscape */ __('Waiting For Admin Reply.') ?></p>
+            <?php } else { ?>
+           <div class="admin-reply"><?= /* @noEscape */ $adminReply; ?></div>
+            <?php } ?>
+       </div>
+     </div>     
+   </div>  
+    <?php endforeach; ?>   
+<?php endif; ?>
+</div>

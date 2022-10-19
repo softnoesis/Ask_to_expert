@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Softnoesis
+ * Copyright(C) 06/2020 Softnoesis <ideveloper1990@gmail.com>
+ * @package Softnoesis_Asktoexpert
+ * @copyright Copyright(C) 2015 Softnoesis (ideveloper1990@gmail.com)
+ * @author Softnoesis <ideveloper1990@gmail.com>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<virtualType name="ZarathemesAskforquoteGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+		<arguments>
+			<argument name="appliers" xsi:type="array">
+				<item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+				<item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+			</argument>
+		</arguments>
+	</virtualType>
+	<virtualType name="ZarathemesAskforquoteGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+		<arguments>
+			<argument name="collection" xsi:type="object" shared="false">Softnoesis\Asktoexpert\Model\ResourceModel\Askforquote\Collection</argument>
+			<argument name="filterPool" xsi:type="object" shared="false">ZarathemesAskforquoteGridFilterPool</argument>
+		</arguments>
+	</virtualType>
+	<virtualType name="Softnoesis\Asktoexpert\Model\ResourceModel\Askforquote\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">softnoesis_askforquote</argument>
+			<argument name="resourceModel" xsi:type="string">Softnoesis\Asktoexpert\Model\ResourceModel\Askforquote</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="softnoesis_askforquote_index_listing_data_source" xsi:type="string">Softnoesis\Asktoexpert\Model\ResourceModel\Askforquote\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+	<type name="Magento\Framework\App\Action\AbstractAction">
+	    	<plugin name="customer-session-data-to-context" type="Softnoesis\Asktoexpert\Plugin\CustomerSessionContext" sortOrder="15"/>
+	 </type>
+</config>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Softnoesis
+ * Copyright(C) 06/2020 Softnoesis <ideveloper1990@gmail.com>
+ * @package Softnoesis_Asktoexpert
+ * @copyright Copyright(C) 2015 Softnoesis (ideveloper1990@gmail.com)
+ * @author Softnoesis <ideveloper1990@gmail.com>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Backend/etc/menu.xsd">
+	<menu>
+            <add id="Softnoesis_Asktoexpert::softnoesis_askforquote" module="Softnoesis_Asktoexpert" resource="Softnoesis_Asktoexpert::items" sortOrder="11" title="Ask to expert"/>
+		
+		<add id="Softnoesis_Asktoexpert::quotedetail" title="List Of Inquiries" module="Softnoesis_Asktoexpert" sortOrder="21" parent="Softnoesis_Asktoexpert::softnoesis_askforquote" action="softnoesis_askforquote/items/index" resource="Softnoesis_Asktoexpert::quotedetail" />
+			
+		<add id="Softnoesis_Asktoexpert::quoterequest" title="Configuration" module="Softnoesis_Asktoexpert" sortOrder="22" parent="Softnoesis_Asktoexpert::softnoesis_askforquote" action="adminhtml/system_config/edit/section/askforquote" resource="Softnoesis_Asktoexpert::quoterequest" />
+	</menu>
+</config>

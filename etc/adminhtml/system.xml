@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Softnoesis
+ * Copyright(C) 06/2020 Softnoesis <ideveloper1990@gmail.com>
+ * @package Softnoesis_Asktoexpert
+ * @copyright Copyright(C) 2015 Softnoesis (ideveloper1990@gmail.com)
+ * @author Softnoesis <ideveloper1990@gmail.com>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Config/etc/system_file.xsd">
+    <system>
+        <tab id="softnoesis" translate="label" sortOrder="450" class="softnoesis-tab">
+            <label>Softnoesis</label>
+        </tab>
+        <section id="askforquote" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Ask To Expert</label>
+            <tab>softnoesis</tab>
+            <resource>Softnoesis_Asktoexpert::quoterequest</resource>
+            <group id="general" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                 <label>General</label>
+                <attribute type="expanded">1</attribute>
+                <comment>
+                    <![CDATA[
+                    <div id="softnoesis-info">
+                        <a href="https://www.softnoesis.com/" target="_blank">
+                        <img class="softnoesis-logo" src="https://www.softnoesis.com/wp-content/uploads/2020/06/softnoesis-new.png">Softnoesis Private Limited</a>© 2015
+                        <a href="https://www.softnoesis.com/contact/" target="_blank">Contact us</a>
+                        <a href="contact@softnoesis.com">Mail for Support</a>
+                    </div>
+                    <div id="softnoesis-module">
+                        Category Related Product Extension -
+                        <span> Version 1.0.0 </span>
+                    </div>
+                    <hr style="border-top: 1px solid #e3e3e3" />
+                ]]>
+                </comment>
+                <field id="enable" translate="label comment" type="select" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable extension on frontend</label>
+                    <comment>Make this extension enable or disable in frontend</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="customer_configration" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Display Quote Button For</label>
+                    <source_model>Softnoesis\Asktoexpert\Model\Config\Source\User</source_model>
+                    <comment>Display quote button for login customer or non login customer</comment>
+                </field>
+                <field id="stock_detail" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Display Quote Button For</label>
+                    <source_model>Softnoesis\Asktoexpert\Model\Config\Source\Option</source_model>
+                    <comment>Display quote button to weighther instock /out of stock or all products</comment>
+                </field>
+               <field id="success" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Success Message</label>
+                    <comment>Display success message after send quotation request</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

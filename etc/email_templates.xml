@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Softnoesis
+ * Copyright(C) 06/2020 Softnoesis <ideveloper1990@gmail.com>
+ * @package Softnoesis_Asktoexpert
+ * @copyright Copyright(C) 2015 Softnoesis (ideveloper1990@gmail.com)
+ * @author Softnoesis <ideveloper1990@gmail.com>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="quote_template" label="Ask For A Quote" file="quote.html" type="html" module="Softnoesis_Asktoexpert" area="frontend" />
+    <template id="reply_template" label="Reply of Quotation" file="admin.html" type="html" module="Softnoesis_Asktoexpert" area="adminhtml" />
+</config>
