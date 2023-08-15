@@ -20,9 +20,9 @@ if ($productCollection == ''): ?>
             $productId = $productData->getProductId();
             $adminReply = $productData->getAdminReply();
             $attachment = $productData->getAttachment();
-            $requestedQty = $productData->getRequestedqty();
+            $phoneNumber = $productData->getPhoneNumber();
             $_product = $block->getLoadProduct($productId);
-            $productImageUrl = $block->getUrl('pub/media/catalog') . 'product' . $_product->getImage();
+            $productImageUrl = $block->getStoreManagerData() . 'media/catalog/product' . $_product->getImage();
             ?>
     <div class="row category-products"> 
       <div class="product-row" id="requset_id_<?= /* @noEscape */ $quoteId; ?>">
@@ -46,9 +46,9 @@ if ($productCollection == ''): ?>
             <span>Product Code: </span>
             <?= /* @noEscape */ $_product->getSku(); ?>
           </div>
-          <div class="requested-qty">
+          <div class="phone-number">
             <span>Phone Number: </span>
-            <?= /* @noEscape */ $productData->getRequestedqty();?>
+            <?= /* @noEscape */ $productData->getPhoneNumber();?>
           </div>
         </div>            
         <div class="col-sm-4">

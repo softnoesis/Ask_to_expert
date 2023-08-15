@@ -16,6 +16,8 @@ class Quote extends \Magento\Framework\App\Action\Action
 {
     protected $scopeConfig;
     protected $transportBuilder;
+    protected $_scopeConfig;
+    protected $_resources;
 
     public function __construct(
         Context $context,
@@ -29,7 +31,7 @@ class Quote extends \Magento\Framework\App\Action\Action
     }
     public function execute()
     {
-        $quantity           = $this->getRequest()->getPost("guest_quote_qty");
+        $phone_number           = $this->getRequest()->getPost("guest_quote_qty");
         $description        = $this->getRequest()->getPost("guest_quote_desc");
         $guestcustomerName  = $this->getRequest()->getPost("guest_quote_customer");
         $guestcustomerEmail = $this->getRequest()->getPost("guest_quote_email");
@@ -49,7 +51,7 @@ class Quote extends \Magento\Framework\App\Action\Action
             $connection = $this->_resources->getConnection();
             $themeTable = $this->_resources->getTableName('softnoesis_askforquote');
             $sql = "INSERT INTO " . $themeTable . "(
-                `requestedqty`, 
+                `phone_number`, 
                 `user_id` , 
                 `product_id` ,
                 `description`, 
@@ -59,7 +61,7 @@ class Quote extends \Magento\Framework\App\Action\Action
                 `customer_email`, 
                 `created_time`)
             VALUES (
-                '$quantity', 
+                '$phone_number', 
                 '$customerId', 
                 '$product_id',
                 '$description',
@@ -86,7 +88,7 @@ class Quote extends \Magento\Framework\App\Action\Action
                 'product_sku' => $productSku,
                 'customer_name' => $customerName,
                 'customer_email' => $customerEmail,
-                'requested_qty' => $quantity,
+                'requested_qty' => $phone_number,
                 'description' => $description,
             ];
             $sender = [
@@ -111,7 +113,7 @@ class Quote extends \Magento\Framework\App\Action\Action
             $connection = $this->_resources->getConnection();
             $themeTable = $this->_resources->getTableName('softnoesis_askforquote');
             $sql = "INSERT INTO " . $themeTable . "(
-                `requestedqty`, 
+                `phone_number`, 
                 `user_id` , 
                 `product_id` ,
                 `description`,
@@ -121,7 +123,7 @@ class Quote extends \Magento\Framework\App\Action\Action
                 `customer_email`,
                 `created_time`)
             VALUES (
-                '$quantity', 
+                '$phone_number', 
                 '', 
                 '$product_id',
                 '$description',
@@ -148,7 +150,7 @@ class Quote extends \Magento\Framework\App\Action\Action
                 'product_sku' => $productSku,
                 'customer_name' => $guestcustomerName,
                 'customer_email' => $guestcustomerEmail,
-                'requested_qty' => $quantity,
+                'requested_qty' => $phone_number,
                 'description' => $description,
             ];
             $sender = [

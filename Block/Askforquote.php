@@ -17,6 +17,7 @@ class Askforquote extends \Magento\Framework\View\Element\Template
     protected $_registry;
     protected $_stockItemRepository;
     protected $_productloader;
+    protected $_storeManager;
     
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,
@@ -26,6 +27,7 @@ class Askforquote extends \Magento\Framework\View\Element\Template
         \Magento\CatalogInventory\Api\StockRegistryInterface $stockItemRepository,
         \Magento\Catalog\Model\ProductFactory $_productloader,
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
+        \Magento\Store\Model\StoreManagerInterface $storeManager,
         array $data = []
     ) {
         $this->_quoteCollectionFactory = $quoteCollectionFactory;
@@ -37,6 +39,7 @@ class Askforquote extends \Magento\Framework\View\Element\Template
         $this->_scopeConfig = $scopeConfig;
         parent::__construct($context, $data);
         $this->_isScopePrivate = true;
+        $this->_storeManager = $storeManager;
     }
 
     public function getRequestCollection()
@@ -106,5 +109,9 @@ class Askforquote extends \Magento\Framework\View\Element\Template
     public function getUser()
     {
          return $this->_scopeConfig->getValue('askforquote/general/customer_configration', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+    }
+    public function getStoreManagerData()
+    {
+        return $this->_storeManager->getStore()->getBaseUrl();
     }
 }

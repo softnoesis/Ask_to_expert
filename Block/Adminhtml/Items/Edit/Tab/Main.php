@@ -106,18 +106,18 @@ class Main extends Generic implements TabInterface
             ]
         );
 
-        $fieldset = $form->addFieldset('quote_fieldset', ['legend' => __('Inquiries Information')]);
-
         $fieldset->addField(
-            'requestedqty',
+            'phone_number',
             'text',
             [
-                'name' => 'requestedqty',
-                'label' => __('Requested Qty'),
-                'title' => __('Requested Qty'),
+                'name' => 'phone_number',
+                'label' => __('Customer Phone Number'),
+                'title' => __('Customer Phone Number'),
                 'readonly' => 'true',
             ]
         );
+
+        $fieldset = $form->addFieldset('quote_fieldset', ['legend' => __('Inquiries Information')]);
 
         $fieldset->addField(
             'description',

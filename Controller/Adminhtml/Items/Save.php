@@ -21,10 +21,13 @@ class Save extends \Magento\Backend\App\Action
     /**
      * @param Action\Context $context
      */
-    protected $scopeConfig;
+    // protected $scopeConfig;
     protected $transportBuilder;
     protected $_fileUploaderFactory;
     protected $_file;
+    protected $_storeManager;
+    protected $_filesystem;
+    protected $_scopeConfig;
 
     public function __construct(
         Action\Context $context,
@@ -86,7 +89,7 @@ class Save extends \Magento\Backend\App\Action
                     'admin_reply' => $post['admin_reply'],
                     'product_name' => $post['product_name'],
                     'product_sku' => $post['product_sku'],
-                    'requested_qty' => $post['requestedqty'],
+                    'requested_qty' => $post['phone_number'],
                     'description' => $post['description'],
                 ];
 

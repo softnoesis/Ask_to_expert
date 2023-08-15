@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Softnoesis
+ * Copyright(C) 05/2023 Softnoesis <ideveloper1990@gmail.com>
+ * @package Softnoesis_SizeChart
+ * @copyright Copyright(C) 2015 Softnoesis (ideveloper1990@gmail.com)
+ * @author Softnoesis <ideveloper1990@gmail.com>
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+
+   <table name="softnoesis_askforquote" resource="default" engine="innodb" comment="Sizechart">
+       <column xsi:type="int" name="askforquote_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+       <column xsi:type="bigint" name="phone_number" nullable="false" comment="phone_number"/>
+       <column xsi:type="int" name="user_id" nullable="false" comment="User Id"/>
+       <column xsi:type="int" name="product_id" nullable="false" comment="Product Id"/>
+       <column xsi:type="longtext" name="description" nullable="false" comment="Description"/>
+       <column xsi:type="varchar" name="product_name" nullable="false" comment="Product Name"/>
+       <column xsi:type="varchar" name="product_sku" nullable="false" comment="Product Sku"/>
+       <column xsi:type="varchar" name="customer_name" nullable="false" comment="Customer Name"/>
+       <column xsi:type="varchar" name="customer_email" nullable="false" comment="Customer Email"/>
+       <column xsi:type="varchar" name="admin_reply" nullable="false" comment="Admin Reply"/>
+       <column name="created_time" nullable="false" xsi:type="timestamp" on_update="false" comment="Created Time"/>
+       <column name="update_time" nullable="false" xsi:type="timestamp" on_update="true" comment="Updated Time"/>
+       <constraint xsi:type="primary" referenceId="PRIMARY">
+           <column name="askforquote_id"/>
+       </constraint>
+   </table>
+
+</schema>

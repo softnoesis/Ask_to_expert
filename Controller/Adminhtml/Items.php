@@ -39,6 +39,8 @@ abstract class Items extends \Magento\Backend\App\Action
     protected $uploaderFactory;
     protected $adapterFactory;
     protected $filesystem;
+    protected $directoryList;
+    protected $_file;
 
     /**
      * Initialize Group Controller
